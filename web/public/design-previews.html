@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launchpad Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#101211;--paper:#f3f1ea;--line:#d6d4cc;--muted:#77776f;--acid:#c8ff39;--coral:#ff5c45;--blue:#315bff;--aqua:#58e5cb;--plum:#4d2d65}
+*{box-sizing:border-box}body{margin:0;background:#101211;color:#f3f1ea;font:15px/1.45 'DM Sans',sans-serif}a{color:inherit}.intro{max-width:1400px;margin:0 auto;padding:56px 32px 24px;display:flex;justify-content:space-between;align-items:end;gap:24px}.intro h1{max-width:750px;margin:0;font:600 clamp(38px,5vw,70px)/.97 'Space Grotesk',sans-serif;letter-spacing:-2px}.intro h1 span{color:var(--acid)}.intro p{max-width:380px;margin:0;color:#aaa;font-size:15px}.directions{max-width:1400px;margin:auto;padding:22px 32px 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.direction{min-width:0}.direction-head{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 12px}.direction-head h2{margin:0;font:600 21px 'Space Grotesk',sans-serif}.direction-head span{font:11px 'DM Mono',monospace;color:#a3a39a;letter-spacing:1px;text-transform:uppercase}.caption{min-height:58px;margin:12px 2px 0;color:#aaa;font-size:13px}.mock{--surface:#181b19;--ink:#f2f3ed;--sub:#8d958d;--rule:#303631;--accent:#c8ff39;--signal:#ff654b;--tile:#222622;overflow:hidden;min-height:580px;border:1px solid #414540;border-radius:8px;background:var(--surface);color:var(--ink);box-shadow:0 18px 60px #0006}.mock *{box-sizing:border-box}.mock-top{height:47px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);font-size:10px}.mock-brand{font:700 14px 'Space Grotesk',sans-serif;letter-spacing:-.5px}.mock-brand i{font-style:normal;color:var(--accent)}.mock-nav{display:flex;gap:16px;color:var(--sub);font-size:9px}.mock-nav b{color:var(--ink)}.wallet{padding:6px 9px;border:1px solid var(--rule);border-radius:4px;font:9px 'DM Mono',monospace}.mock-content{padding:19px 16px}.mock-eyebrow{font:9px 'DM Mono',monospace;color:var(--accent);letter-spacing:1.2px;text-transform:uppercase}.mock-title{margin:5px 0 13px;font:700 27px/.98 'Space Grotesk',sans-serif;letter-spacing:-1px}.mock-title em{font-style:normal;color:var(--accent)}.mock-search{height:31px;margin:15px 0 11px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--rule);border-radius:4px;color:var(--sub);font-size:9px}.mock-search strong{font-weight:500;color:var(--ink)}.market-head,.market-row{display:grid;grid-template-columns:minmax(0,1.6fr) .8fr .8fr .65fr;gap:6px;align-items:center}.market-head{padding:7px 5px;color:var(--sub);font:8px 'DM Mono',monospace;text-transform:uppercase}.market-row{min-height:53px;padding:7px 5px;border-top:1px solid var(--rule);font-size:9px}.coin{display:flex;align-items:center;gap:7px;min-width:0}.coin-name{min-width:0}.coin-name b{display:block;font-size:10px}.coin-name small{display:block;margin-top:2px;color:var(--sub);font:8px 'DM Mono',monospace}.coin-art{flex:none;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:radial-gradient(circle at 28% 24%,#fff8 0 5%,transparent 6%),linear-gradient(145deg,#d9ff69,#477b19);color:#17220a;font:800 14px 'Space Grotesk',sans-serif;transform:rotate(-5deg)}.coin-art.pink{background:radial-gradient(circle at 30% 24%,#fff9 0 5%,transparent 6%),linear-gradient(145deg,#ffbfac,#ed5074);color:#5e1d2d}.coin-art.blue{background:radial-gradient(circle at 30% 24%,#fff9 0 5%,transparent 6%),linear-gradient(145deg,#9edaff,#4661d8);color:#102d75}.coin-art.gold{background:radial-gradient(circle at 30% 24%,#fff9 0 5%,transparent 6%),linear-gradient(145deg,#fff187,#ff9f30);color:#62340c}.mono{font:9px 'DM Mono',monospace;white-space:nowrap}.green{color:var(--accent)}.red{color:var(--signal)}.buy-btn{justify-self:end;padding:5px 8px;border:0;border-radius:3px;background:var(--accent);color:#111;font:700 8px 'DM Sans',sans-serif}.bottom-strip{margin-top:13px;padding:10px;border:1px solid var(--rule);border-radius:4px;display:flex;justify-content:space-between;color:var(--sub);font-size:9px}.bottom-strip b{color:var(--ink)}
+/* Market After Dark */
+.dark .mock{--surface:#111412;--ink:#eff2eb;--sub:#879087;--rule:#2b322d;--accent:#c8ff39;--tile:#191d1a;background:radial-gradient(ellipse at 90% 0%,#233119 0,transparent 38%),var(--surface)}.dark .mock-content{padding-top:24px}.dark .mock-title{font-size:31px}.dark .market-row:nth-child(odd){background:#ffffff03}
+/* The Meme Index */
+.index .mock{--surface:#f7f5ee;--ink:#171918;--sub:#767873;--rule:#deddd5;--accent:#e53929;--signal:#315bff;--tile:#fff;background:#f7f5ee;color:var(--ink);border-color:#d8d6ce}.index .mock-top{border-color:var(--rule)}.index .mock-brand i{color:var(--accent)}.index .mock-nav{color:var(--sub)}.index .mock-nav b{color:var(--ink)}.index .wallet{border-color:#c8c6bd}.index .mock-eyebrow{color:var(--accent)}.index .mock-title{font:700 29px/.96 'Fraunces',serif;letter-spacing:-.5px}.index .mock-title em{color:var(--accent)}.index .mock-search{border-color:#d8d6ce;background:white}.index .coin-art{border-radius:50%;transform:none}.index .coin-art.pink{background:linear-gradient(140deg,#ffb59f,#ff644e);color:#612015}.index .coin-art.blue{background:linear-gradient(140deg,#a7b8ff,#315bff);color:#fff}.index .coin-art.gold{background:linear-gradient(140deg,#fcdd66,#f2a52e);color:#513208}.index .market-row{border-color:var(--rule)}.index .green{color:#078658}.index .red{color:#d93c30}.index .buy-btn{background:var(--accent);color:white}.index .bottom-strip{border-color:var(--rule);background:#fff}.index .bottom-strip b{color:var(--ink)}
+/* Launch Carnival */
+.carnival .mock{--surface:#20182a;--ink:#fff9ef;--sub:#b6a9be;--rule:#493b51;--accent:#f2f36b;--signal:#ff725b;--tile:#2b2035;background:radial-gradient(ellipse at 10% 8%,#4a2c5a 0,transparent 39%),#20182a}.carnival .mock-brand i{color:var(--accent)}.carnival .mock-eyebrow{color:var(--aqua)}.carnival .mock-title{font-size:29px}.carnival .mock-title em{color:var(--accent)}.carnival .coin-art{border-radius:11px 5px 12px 5px;transform:rotate(-8deg);box-shadow:2px 3px 0 #0005}.carnival .coin-art.pink{background:linear-gradient(140deg,#ffad89,#fb5e6d);color:#65223a}.carnival .coin-art.blue{background:linear-gradient(140deg,#75f0e0,#239d9b);color:#103f42}.carnival .coin-art.gold{background:linear-gradient(140deg,#fcf878,#f1a835);color:#633513}.carnival .green{color:var(--aqua)}.carnival .buy-btn{background:var(--accent)}.carnival .bottom-strip{background:#2b2035}
+.choose{max-width:1400px;margin:0 auto;padding:0 32px 60px;color:#a9aca5;font-size:13px}.choose b{color:#f1f2ec}.footnote{font:10px 'DM Mono',monospace;color:#7d827c;margin-top:8px}
+@media(max-width:1080px){.directions{grid-template-columns:1fr;max-width:820px}.mock{min-height:unset}.mock-content{padding:22px}.mock-row{min-height:56px}.caption{min-height:0}.intro{display:block}.intro p{margin-top:18px}.direction-head{margin-top:10px}}
+@media(max-width:520px){.intro{padding:34px 18px 12px}.intro h1{font-size:42px;letter-spacing:-1.5px}.directions{padding:14px 18px 36px;gap:24px}.mock-top{padding:0 10px}.mock-nav{gap:9px}.mock-content{padding:15px 10px}.mock-title{font-size:25px}.dark .mock-title,.index .mock-title,.carnival .mock-title{font-size:25px}.market-head,.market-row{grid-template-columns:minmax(0,1.4fr) .7fr .7fr .52fr;gap:3px}.market-head{font-size:7px}.market-row{font-size:8px}.coin{gap:5px}.coin-art{width:25px;height:25px}.coin-name b{font-size:9px}.coin-name small{font-size:7px}.mono{font-size:8px}.buy-btn{padding:5px 6px;font-size:7px}.choose{padding:0 18px 36px}}
+.market-row{grid-template-columns:minmax(0,1.6fr) .8fr .8fr .65fr 38px}
+@media(max-width:520px){.market-row{grid-template-columns:minmax(0,1.4fr) .7fr .72fr .52fr 31px}.buy-btn{padding:5px 3px;font-size:6px}}
+</style>
+</head>
+<body>
+<header class="intro">
+  <div><div class="mock-eyebrow">Launchpad design directions / 2026</div><h1>Three looks.<br><span>One launchpad.</span></h1></div>
+  <p>Compare the visual language and real screen layouts before picking a direction. Each concept shows the token discovery experience, with the same core market data and Buy action.</p>
+</header>
+<main class="directions">
+  <section class="direction dark">
+    <div class="direction-head"><h2>Market After Dark</h2><span>01 / Trading terminal</span></div>
+    <div class="mock">
+      <div class="mock-top"><div class="mock-brand">NIGHT<span>MARKET</span><i> / RH</i></div><div class="mock-nav"><b>Markets</b><span>Launch</span><span>Activity</span></div><div class="wallet">0x82…3F1A</div></div>
+      <div class="mock-content"><div class="mock-eyebrow">Robinhood testnet · live markets</div><div class="mock-title">Find the next<br><em>100x signal.</em></div><div class="bottom-strip"><span>Market pulse</span><b>03 tokens moving</b><span class="green">+12.8% volume</span></div><div class="mock-search"><strong>⌕ &nbsp; Search token or ticker</strong><span>Newest⌄</span></div>
+        <div class="market-head"><span>Asset</span><span>Price</span><span>24h volume</span><span></span></div>
+        <div class="market-row"><div class="coin"><div class="coin-art">V</div><div class="coin-name"><b>Volt Gems</b><small>VOLT · 4h</small></div></div><span class="mono">0.00001</span><span class="mono">0.84 ETH</span><span class="green mono">+18.2%</span><button class="buy-btn">TRADE</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art pink">P</div><div class="coin-name"><b>Pons Family</b><small>PONS · 5h</small></div></div><span class="mono">0.00001</span><span class="mono">0.39 ETH</span><span class="green mono">+8.6%</span><button class="buy-btn">TRADE</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art blue">T</div><div class="coin-name"><b>Test Token</b><small>TEST · 9h</small></div></div><span class="mono">0.00001</span><span class="mono">0.12 ETH</span><span class="red mono">−2.4%</span><button class="buy-btn">TRADE</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art gold">M</div><div class="coin-name"><b>Moon Hamster</b><small>HAM · 12h</small></div></div><span class="mono">0.00002</span><span class="mono">0.08 ETH</span><span class="green mono">+4.1%</span><button class="buy-btn">TRADE</button></div>
+        <div class="bottom-strip"><span>Listed assets</span><b>24 tokens</b><span>Updated just now</span></div>
+      </div>
+    </div>
+    <p class="caption">A serious exchange surface with a little degen edge. Dense, fast to scan, and built for repeat trading.</p>
+    <div class="footnote">GRAPHITE / ACID LIME / DM MONO</div>
+  </section>
+  <section class="direction index">
+    <div class="direction-head"><h2>The Meme Index</h2><span>02 / Culture desk</span></div>
+    <div class="mock">
+      <div class="mock-top"><div class="mock-brand">THE MEME <i>INDEX</i></div><div class="mock-nav"><b>Discover</b><span>New coins</span><span>About</span></div><div class="wallet">Connect wallet</div></div>
+      <div class="mock-content"><div class="mock-eyebrow">Internet culture, priced in ETH</div><div class="mock-title">Ideas become<br><em>markets.</em></div><div class="bottom-strip"><span>Today's board</span><b>42 projects</b><span class="green">$? test ETH</span></div><div class="mock-search"><strong>⌕ &nbsp; Search the index</strong><span>24h volume⌄</span></div>
+        <div class="market-head"><span>Project</span><span>Price</span><span>Volume</span><span>Move</span></div>
+        <div class="market-row"><div class="coin"><div class="coin-art">V</div><div class="coin-name"><b>Volt Gems</b><small>VOLT / launched 4h ago</small></div></div><span class="mono">0.00001</span><span class="mono">0.84 ETH</span><span class="green mono">+18.2%</span><button class="buy-btn">Buy</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art pink">P</div><div class="coin-name"><b>Pons Family</b><small>PONS / launched 5h ago</small></div></div><span class="mono">0.00001</span><span class="mono">0.39 ETH</span><span class="green mono">+8.6%</span><button class="buy-btn">Buy</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art blue">T</div><div class="coin-name"><b>Test Token</b><small>TEST / launched 9h ago</small></div></div><span class="mono">0.00001</span><span class="mono">0.12 ETH</span><span class="red mono">−2.4%</span><button class="buy-btn">Buy</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art gold">M</div><div class="coin-name"><b>Moon Hamster</b><small>HAM / launched 12h ago</small></div></div><span class="mono">0.00002</span><span class="mono">0.08 ETH</span><span class="green mono">+4.1%</span><button class="buy-btn">Buy</button></div>
+        <div class="bottom-strip"><span>Curated by the crowd</span><b>Every token has a story</b><span>Read the index ↗</span></div>
+      </div>
+    </div>
+    <p class="caption">Editorial and shareable, with creator identity up front. A culture publication that happens to have a live market.</p>
+    <div class="footnote">PAPER WHITE / SIGNAL RED / FRAUNCES</div>
+  </section>
+  <section class="direction carnival">
+    <div class="direction-head"><h2>Launch Carnival</h2><span>03 / Internet arcade</span></div>
+    <div class="mock">
+      <div class="mock-top"><div class="mock-brand">MEME<i>LAND</i></div><div class="mock-nav"><b>Explore</b><span>Launch token</span><span>Hall of fame</span></div><div class="wallet">Connect ↗</div></div>
+      <div class="mock-content"><div class="mock-eyebrow">A tiny corner of the internet</div><div class="mock-title">Big meme energy.<br><em>Real onchain trades.</em></div><div class="bottom-strip"><span>Rolling launches</span><b>Fresh from the chain</b><span style="color:var(--aqua)">LIVE</span></div><div class="mock-search"><strong>⌕ &nbsp; Find your people</strong><span>Trending⌄</span></div>
+        <div class="market-head"><span>Community</span><span>Price</span><span>24h volume</span><span>Move</span></div>
+        <div class="market-row"><div class="coin"><div class="coin-art">V</div><div class="coin-name"><b>Volt Gems</b><small>VOLT · electric crew</small></div></div><span class="mono">0.00001</span><span class="mono">0.84 ETH</span><span class="green mono">+18.2%</span><button class="buy-btn">Join</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art pink">P</div><div class="coin-name"><b>Pons Family</b><small>PONS · family first</small></div></div><span class="mono">0.00001</span><span class="mono">0.39 ETH</span><span class="green mono">+8.6%</span><button class="buy-btn">Join</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art blue">T</div><div class="coin-name"><b>Test Token</b><small>TEST · test the waters</small></div></div><span class="mono">0.00001</span><span class="mono">0.12 ETH</span><span class="red mono">−2.4%</span><button class="buy-btn">Join</button></div>
+        <div class="market-row"><div class="coin"><div class="coin-art gold">M</div><div class="coin-name"><b>Moon Hamster</b><small>HAM · small but mighty</small></div></div><span class="mono">0.00002</span><span class="mono">0.08 ETH</span><span class="green mono">+4.1%</span><button class="buy-btn">Join</button></div>
+        <div class="bottom-strip"><span>Built by the weird ones</span><b>Pick a side. Buy a meme.</b><span>More lore ↗</span></div>
+      </div>
+    </div>
+    <p class="caption">A bold, sticker-like world for meme communities. More expressive, more colorful, still anchored by real prices and volume.</p>
+    <div class="footnote">PLUM / CITRUS / AQUA / SPACE GROTESK</div>
+  </section>
+</main>
+<footer class="choose"><b>Choose a direction:</b> Market After Dark, The Meme Index, or Launch Carnival. These are visual concepts; the production app’s trading behavior stays the same.</footer>
+</body>
+</html>
