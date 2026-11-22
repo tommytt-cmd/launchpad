@@ -26,7 +26,7 @@ function TokenArtwork({ token, featured = false }: { token: { address: string; s
 
 function TopLaunches({ ethUsd }: { ethUsd?: number }) {
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
-  const { data: volumeTokens = [] } = useQuery({
+  const { data: volumeTokens = [], isLoading } = useQuery({
     queryKey: ["top-launches"],
     queryFn: () => fetchTokens("volume", ""),
     refetchInterval: 5000,
@@ -42,7 +42,7 @@ function TopLaunches({ ethUsd }: { ethUsd?: number }) {
     }
   }
 
-  if (tokens.length === 0) return null;
+  if (tokens.length === 0 && !isLoading) return null;
 
   return (
     <section className="top-launches" aria-label="Top launches">
@@ -50,7 +50,11 @@ function TopLaunches({ ethUsd }: { ethUsd?: number }) {
         <div>{/*<p className="eyebrow">MARKET BOARD</p><*/}<h3>Top launches</h3></div>
         <Link className="launch-link" href="/launch"><span aria-hidden>＋</span> Launch token</Link>
       </div>
-      <div className="top-launches-viewport" aria-label="Top tokens by 24-hour volume">
+      {isLoading ? (
+        <div className="top-launches-skeletons" role="status" aria-label="Loading top launches">
+          {Array.from({ length: 3 }, (_, index) => <div className="top-launch-skeleton" key={index}><i /><div><span /><b /><b /></div></div>)}
+        </div>
+      ) : <div className="top-launches-viewport" aria-label="Top tokens by 24-hour volume">
         <div className="top-launches-track" aria-live="off">
           {[0, 1].map((copy) => (
             <div className="top-launches-group" key={copy} aria-hidden={copy === 1}>
@@ -74,7 +78,7 @@ function TopLaunches({ ethUsd }: { ethUsd?: number }) {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
     </section>
   );
 }
