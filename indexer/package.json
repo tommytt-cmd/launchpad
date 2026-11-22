@@ -2,8 +2,20 @@
   "name": "launchpad-indexer",
   "private": true,
   "type": "module",
-  "engines": { "node": "20.x" },
-  "scripts": { "start": "tsx --env-file=.env src/index.ts" },
-  "dependencies": { "better-sqlite3": "^11.3.0", "viem": "^2.21.0" },
-  "devDependencies": { "@types/better-sqlite3": "^7.6.11", "@types/node": "^22.0.0", "tsx": "^4.19.0", "typescript": "^5.6.0" }
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env --import tsx src/index.ts"
+  },
+  "dependencies": {
+    "pg": "^8.23.1",
+    "tsx": "^4.19.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "typescript": "^5.6.0"
+  }
 }
