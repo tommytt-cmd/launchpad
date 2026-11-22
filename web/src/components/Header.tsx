@@ -23,7 +23,7 @@ export function Header() {
           <button onClick={() => switchChain({ chainId: chain.id })}>Switch to {chain.name}</button>
         ) : isConnected ? (
           <>
-            <span className="pill wallet-pill"><span className="wallet-dot" />{address?.slice(0, 6)}…{address?.slice(-4)}</span>
+            {/*<span className="pill wallet-pill"><span className="wallet-dot" />{address?.slice(0, 6)}…{address?.slice(-4)}</span>*/}
             <button className="alt" onClick={() => disconnect()}>Disconnect</button>
           </>
         ) : (
