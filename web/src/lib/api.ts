@@ -22,8 +22,13 @@ export type TokenActivity = {
 export type MarketStats = { tokens: number; trades24h: number; volume24hEth: number; updatedAt: number };
 
 export function resolveTokenImage(image: string): string {
-  const match = image.match(/^(?:ipfs:\/\/|https:\/\/ipfs\.io\/ipfs\/)([a-zA-Z0-9]+)(?:\/.*)?$/);
-  return match ? `/api/ipfs/${match[1]}` : image;
+  const ipfsPath = image.startsWith("ipfs://")
+    ? image.slice("ipfs://".length)
+    : image.match(/^https?:\/\/ipfs\.io\/ipfs\/(.+)$/i)?.[1];
+
+  // Use an absolute gateway URL so images also load when the frontend is deployed
+  // as a static Vite site without the custom Node server's /api/ipfs proxy route.
+  return ipfsPath ? `https://ipfs.io/ipfs/${ipfsPath}` : image;
 }
 
 export async function fetchEthUsd(): Promise<number> {
