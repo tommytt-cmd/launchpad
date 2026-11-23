@@ -47,8 +47,8 @@ function TopLaunches({ ethUsd }: { ethUsd?: number }) {
   return (
     <section className="top-launches" aria-label="Top launches">
       <div className="top-launches-heading">
-        <div>{/*<p className="eyebrow">MARKET BOARD</p><*/}<h3>Top launches</h3></div>
-        <Link className="launch-link" href="/launch"><span aria-hidden>＋</span> Launch token</Link>
+        <div>{/*<p className="eyebrow">MARKET BOARD</p><*/}<h2>Trending</h2></div>
+        {/*<Link className="launch-link" href="/launch"><span aria-hidden>＋</span> Launch token</Link>*/}
       </div>
       {isLoading ? (
         <div className="top-launches-skeletons" role="status" aria-label="Loading top launches">
@@ -157,7 +157,7 @@ export function TokenList() {
       <div className="market-heading">
         <div>
           {/*<p className="eyebrow"><span className="live-dot" /> Robinhood testnet · live markets</p>*/}
-          <h2>Token markets</h2>
+          <h2>Discover tokens</h2>
         </div>
         <Link className="launch-link" href="/launch"><span aria-hidden>＋</span> Launch token</Link>
       </div>
