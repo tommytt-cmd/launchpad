@@ -208,7 +208,10 @@ export function TokenList() {
       <TopLaunches ethUsd={ethUsd.data} />
       {rankedTokens.length > 0 && <section className="tiles-entry-section" aria-labelledby="tiles-entry-title">
         <div className="tiles-entry-heading">
-          <div><div className="tiles-entry-title-line"><span className="tiles-entry-eyebrow">TOKEN-SPECIFIC FEE SHARING</span><span className="tiles-entry-status"><i aria-hidden="true" /> Preview</span></div><h2 id="tiles-entry-title">Explore Tiles</h2><p>Each token has its own proposed board. Tile ownership is separate from the token and its liquidity.</p></div>
+          <div>{/*<div className="tiles-entry-title-line"><span className="tiles-entry-eyebrow">TOKEN-SPECIFIC FEE SHARING</span><span className="tiles-entry-status"><i aria-hidden="true" /> Preview</span></div>*/}
+          <h2 id="tiles-entry-title">Explore Tiles</h2>
+          {/*<p>Each token has its own proposed board. Tile ownership is separate from the token and its liquidity.</p>*/}
+          </div>
           <div className="tiles-entry-controls" role="group" aria-label="Move through Tiles markets">
             <button type="button" aria-label="Previous Tiles markets" disabled={!canScrollTilesLeft} onClick={() => moveTilesCarousel(-1)}><CaretLeft size={16} weight="bold" aria-hidden="true" /></button>
             <button type="button" aria-label="Next Tiles markets" disabled={!canScrollTilesRight} onClick={() => moveTilesCarousel(1)}><CaretRight size={16} weight="bold" aria-hidden="true" /></button>
@@ -224,7 +227,7 @@ export function TokenList() {
             </Link>
           ))}
         </div>
-        <p className="tiles-entry-note">Proposed Tiles preview. Ownership, rewards, and purchases are not connected to a live contract.</p>
+        {/*<p className="tiles-entry-note">Proposed Tiles preview. Ownership, rewards, and purchases are not connected to a live contract.</p>*/}
       </section>}
       <div className="toolbar">
         <label className="search-field"><span aria-hidden>⌕</span><input aria-label="Search" placeholder="Search token, ticker or address" value={q} onChange={(e) => setQ(e.target.value)} /></label>
