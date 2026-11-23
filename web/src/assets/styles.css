@@ -1102,3 +1102,21 @@ body:has(.tile-detail-dialog[open]){overflow:hidden}
   .docs-address{font-size:11px!important}
   .footer-network,.footer-copyright,.footer-disclosure h2{font-size:10px}
 }
+
+@media(max-width:720px){
+  .launch-form-section input:not([type="range"]),
+  .launch-form-section select,
+  .launch-form-section textarea{font-size:16px}
+}
+
+.site-header .mobile-menu-toggle,.site-header .mobile-nav{display:none}
+@media(max-width:720px){
+  .site-header .desktop-nav{display:none}
+  .site-header .mobile-menu-toggle{display:grid;width:42px;height:42px;flex:none;place-items:center;padding:0;border:1px solid #3a453b;border-radius:4px;background:linear-gradient(135deg,#202820,#151a15);color:#e6eee2}
+  .site-header .mobile-menu-toggle:hover{border-color:#829c53;background:linear-gradient(135deg,#293528,#1a2119);color:#d4ff9b}
+  .site-header .mobile-menu-toggle:focus-visible{outline:2px solid #c8ff63;outline-offset:2px}
+  .site-header .mobile-nav:not([hidden]){position:absolute;top:calc(100% + 1px);right:12px;display:grid;width:min(250px,calc(100vw - 24px));gap:4px;padding:8px;border:1px solid #354035;border-radius:4px;background:linear-gradient(145deg,#1a201a,#111512);box-shadow:0 14px 35px #0009}
+  .site-header .mobile-nav[hidden]{display:none}
+  .site-header .mobile-nav a{display:block;padding:12px 13px;border-radius:3px;color:#dbe4d7;font-size:15px;text-decoration:none}
+  .site-header .mobile-nav a:hover,.site-header .mobile-nav a[aria-current="page"]{background:#c8ff3912;color:#d4ff9b}
+}
