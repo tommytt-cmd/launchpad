@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/components/Link";
 import { useQuery } from "@tanstack/react-query";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { fetchEthUsd, fetchMarketStats, fetchTokens, fmtEth, fmtUsd, ago, resolveTokenImage } from "@/lib/api";
 
 const tokenHue = (address: string) => `${parseInt(address.slice(2, 8), 16) % 360}deg`;
@@ -132,6 +133,9 @@ export function TokenList() {
   const [sort, setSort] = useState("new");
   const [q, setQ] = useState("");
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
+  const tilesCarouselRef = useRef<HTMLDivElement>(null);
+  const [canScrollTilesLeft, setCanScrollTilesLeft] = useState(false);
+  const [canScrollTilesRight, setCanScrollTilesRight] = useState(false);
   const { data, error, isLoading } = useQuery({
     queryKey: ["tokens", sort, q],
     queryFn: () => fetchTokens(sort, q),
@@ -140,6 +144,31 @@ export function TokenList() {
   const market = useQuery({ queryKey: ["market-stats"], queryFn: fetchMarketStats, refetchInterval: 10_000, retry: false });
   const ethUsd = useQuery({ queryKey: ["eth-usd-reference"], queryFn: fetchEthUsd, refetchInterval: 60_000, staleTime: 30_000, retry: false });
   const rankedTokens = data ?? [];
+  const updateTilesCarouselControls = useCallback(() => {
+    const carousel = tilesCarouselRef.current;
+    if (!carousel) return;
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    setCanScrollTilesLeft(carousel.scrollLeft > 1);
+    setCanScrollTilesRight(carousel.scrollLeft < maxScrollLeft - 1);
+  }, []);
+
+  useEffect(() => {
+    const carousel = tilesCarouselRef.current;
+    if (!carousel) return;
+    updateTilesCarouselControls();
+    const observer = new ResizeObserver(updateTilesCarouselControls);
+    observer.observe(carousel);
+    return () => observer.disconnect();
+  }, [rankedTokens.length, updateTilesCarouselControls]);
+
+  function moveTilesCarousel(direction: -1 | 1) {
+    const carousel = tilesCarouselRef.current;
+    if (!carousel) return;
+    carousel.scrollBy({
+      left: direction * Math.max(carousel.clientWidth * 0.8, 240),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  }
 
   async function copyTokenAddress(address: string) {
     try {
@@ -179,12 +208,15 @@ export function TokenList() {
       <TopLaunches ethUsd={ethUsd.data} />
       {rankedTokens.length > 0 && <section className="tiles-entry-section" aria-labelledby="tiles-entry-title">
         <div className="tiles-entry-heading">
-          <div><span className="tiles-entry-eyebrow">TOKEN-SPECIFIC FEE SHARING</span><h2 id="tiles-entry-title">Explore Tiles</h2><p>Each token has its own proposed board. Tile ownership is separate from the token and its liquidity.</p></div>
-          <span className="tiles-entry-status"><i aria-hidden="true" /> Preview</span>
+          <div><div className="tiles-entry-title-line"><span className="tiles-entry-eyebrow">TOKEN-SPECIFIC FEE SHARING</span><span className="tiles-entry-status"><i aria-hidden="true" /> Preview</span></div><h2 id="tiles-entry-title">Explore Tiles</h2><p>Each token has its own proposed board. Tile ownership is separate from the token and its liquidity.</p></div>
+          <div className="tiles-entry-controls" role="group" aria-label="Move through Tiles markets">
+            <button type="button" aria-label="Previous Tiles markets" disabled={!canScrollTilesLeft} onClick={() => moveTilesCarousel(-1)}><CaretLeft size={16} weight="bold" aria-hidden="true" /></button>
+            <button type="button" aria-label="Next Tiles markets" disabled={!canScrollTilesRight} onClick={() => moveTilesCarousel(1)}><CaretRight size={16} weight="bold" aria-hidden="true" /></button>
+          </div>
         </div>
-        <div className="tiles-entry-grid">
-          {rankedTokens.slice(0, 3).map((token) => (
-            <Link className="tiles-entry-card" href={`/tiles/${token.address}`} key={token.address} style={tokenStyle(token.address)}>
+        <div className="tiles-entry-grid" ref={tilesCarouselRef} onScroll={updateTilesCarouselControls} role="list" aria-label="Token Tiles previews">
+          {rankedTokens.slice(0, 12).map((token) => (
+            <Link className="tiles-entry-card" href={`/tiles/${token.address}`} key={token.address} style={tokenStyle(token.address)} role="listitem">
               <div className="tiles-entry-art"><TokenArtwork token={token} /></div>
               <div className="tiles-entry-copy"><b>{token.name}</b><span>${token.symbol} <i>·</i> launched {ago(token.createdAt)}</span></div>
               <span className="tiles-entry-count">100 <small>tiles</small></span>

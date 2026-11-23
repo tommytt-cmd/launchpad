@@ -12,7 +12,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="brand">
-        <Link className="brand-mark" href="/" aria-label="Night Market home">NIGHT<span>MARKET</span><i> / RH</i></Link>
+        <Link className="brand-mark" href="/" aria-label="Night Market home">NIGHT<span>MARKET</span></Link>
         <nav>
           <Link href="/launch">Launch</Link>
           <Link href="/">Tokens</Link>
@@ -27,7 +27,7 @@ export function Header() {
             <button className="alt" onClick={() => disconnect()}>Disconnect</button>
           </>
         ) : (
-          <button className="wallet-connect" aria-label="Connect wallet" disabled={isPending} onClick={() => connect({ connector: connectors[0] })}><span className="wallet-label-full" aria-hidden="true">Connect wallet</span><span className="wallet-label-short" aria-hidden="true">Connect</span></button>
+          <button className="alt" aria-label="Connect wallet" disabled={isPending} onClick={() => connect({ connector: connectors[0] })}><span className="wallet-label-full" aria-hidden="true">Connect wallet</span><span className="wallet-label-short" aria-hidden="true">Connect</span></button>
         )}
       </div>
     </header>

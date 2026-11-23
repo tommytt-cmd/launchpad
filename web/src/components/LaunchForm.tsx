@@ -164,7 +164,7 @@ export function LaunchForm() {
           <div className="launch-preview-art-stage">
             {imagePreviewUrl
               ? <img src={imagePreviewUrl} alt="" />
-              : <span>{f.symbol.trim().slice(0, 1).toUpperCase() || f.name.trim().slice(0, 1).toUpperCase() || "✳"}</span>}
+              : <span>{f.symbol.trim().slice(0, 1).toUpperCase() || f.name.trim().slice(0, 1).toUpperCase() || ""}</span>}
           </div>
           <div className="launch-preview-copy">
             <p className="launch-preview-kicker">TOKEN PREVIEW <span>·</span> {chain.name.toUpperCase()}</p>
@@ -177,7 +177,7 @@ export function LaunchForm() {
               <div><span>TAX</span><b>{fee.toFixed(1)}% / {fee.toFixed(1)}%</b></div>
             </div>
           </div>
-          <div className="launch-preview-watermark" aria-hidden="true">{f.symbol.trim().slice(0, 1).toUpperCase() || "✳"}</div>
+          <div className="launch-preview-watermark" aria-hidden="true">{f.symbol.trim().slice(0, 1).toUpperCase() || ""}</div>
         </div>
         <div className="panel launch-form-panel">
           <nav className="launch-stepper" aria-label="Launch steps">
