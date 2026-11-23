@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/components/Link";
 import { useQuery } from "@tanstack/react-query";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight, SquaresFour } from "@phosphor-icons/react";
 import { fetchEthUsd, fetchMarketStats, fetchTokens, fmtEth, fmtUsd, ago, resolveTokenImage } from "@/lib/api";
 
 const tokenHue = (address: string) => `${parseInt(address.slice(2, 8), 16) % 360}deg`;
@@ -202,6 +202,10 @@ export function TokenList() {
         <article className="market-stat-card market-stat-trades">
           <div className="market-stat-art-stage" aria-hidden="true"><span>⇄</span></div>
           <div className="market-stat-copy"><span className="market-stat-label">24h trades</span><b>{market.data?.trades24h ?? "—"}</b></div>
+        </article>
+        <article className="market-stat-card market-stat-tiles" aria-label="Proposed tiles per token">
+          <div className="market-stat-art-stage" aria-hidden="true"><SquaresFour weight="duotone" /></div>
+          <div className="market-stat-copy"><span className="market-stat-label">Proposed tiles / token</span><b>100</b></div>
         </article>
       </div>
       {market.error && <p className="market-stats-error">Market-wide activity summary is temporarily unavailable.</p>}

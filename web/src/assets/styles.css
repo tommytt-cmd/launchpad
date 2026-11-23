@@ -1120,3 +1120,14 @@ body:has(.tile-detail-dialog[open]){overflow:hidden}
   .site-header .mobile-nav a{display:block;padding:12px 13px;border-radius:3px;color:#dbe4d7;font-size:15px;text-decoration:none}
   .site-header .mobile-nav a:hover,.site-header .mobile-nav a[aria-current="page"]{background:#c8ff3912;color:#d4ff9b}
 }
+
+@media(min-width:901px){.market-overview{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.market-stat-tiles{--stat-hue:276;--stat-accent:#b99cff}
+.market-stat-tiles::after{content:"100"}
+@media(max-width:720px){
+  .market-overview{height:134px}
+  .market-overview>.market-stat-card:nth-child(1){top:60px;z-index:4}
+  .market-overview>.market-stat-card:nth-child(2){top:40px;z-index:3}
+  .market-overview>.market-stat-card:nth-child(3){top:20px;z-index:2}
+  .market-overview>.market-stat-card:nth-child(4){top:0;z-index:1}
+}
