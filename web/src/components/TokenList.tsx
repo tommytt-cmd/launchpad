@@ -154,9 +154,9 @@ export function TokenList() {
   return (
     <section>
       <NewLaunchToast />
-      {/*<div className="market-heading">
+      <div className="market-heading">
         <div>
-          {/*<p className="eyebrow"><span className="live-dot" /> Robinhood testnet · live markets</p>/}
+          {/*<p className="eyebrow"><span className="live-dot" /> Robinhood testnet · live markets</p>*/}
           <h2>Token markets</h2>
         </div>
         <Link className="launch-link" href="/launch"><span aria-hidden>＋</span> Launch token</Link>
@@ -174,7 +174,7 @@ export function TokenList() {
           <div className="market-stat-art-stage" aria-hidden="true"><span>⇄</span></div>
           <div className="market-stat-copy"><span className="market-stat-label">24h trades</span><b>{market.data?.trades24h ?? "—"}</b></div>
         </article>
-      </div>*/}
+      </div>
       {market.error && <p className="market-stats-error">Market-wide activity summary is temporarily unavailable.</p>}
       <TopLaunches ethUsd={ethUsd.data} />
       <div className="toolbar">
