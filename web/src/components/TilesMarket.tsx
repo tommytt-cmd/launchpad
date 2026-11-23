@@ -24,19 +24,19 @@ export function TilesMarket({ token }: { token: TokenRow }) {
   return (
     <section className="tiles-market-page" style={{ "--token-hue": tokenHue(token.address) } as CSSProperties}>
       {/*<div className="tiles-breadcrumb"><Link href={`/token/${token.address}`}>← {token.name} market</Link><span> / Tiles</span></div>*/}
-      <header className="tiles-market-heading">
+      {/*<header className="tiles-market-heading">
         {/*<div className="tiles-token-mark">
           {token.image
             ? <img src={resolveTokenImage(token.image)} alt="" referrerPolicy="no-referrer" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} />
             : <span>{token.symbol.slice(0, 1).toUpperCase()}</span>}
-        </div>*/}
+        </div>/}
         <div className="tiles-title-copy" style={{ paddingTop:'0px' }}>
-          {/*<p className="tiles-eyebrow">{token.symbol} · TOKEN-SPECIFIC MARKET</p>*/}
+          {/*<p className="tiles-eyebrow">{token.symbol} · TOKEN-SPECIFIC MARKET</p>/}
           <h3>{token.name} Tiles</h3>
           <p>Own a position in this token’s fee-sharing pool. Tile ownership is separate from the token and its liquidity.</p>
         </div>
-        {/*<span className="tiles-preview-badge"><i /> Market preview</span>*/}
-      </header>
+        {/*<span className="tiles-preview-badge"><i /> Market preview</span>/}
+      </header>*/}
 
       <div className="tiles-market-layout">
         <section className="tiles-board-section" aria-labelledby="tiles-board-title">

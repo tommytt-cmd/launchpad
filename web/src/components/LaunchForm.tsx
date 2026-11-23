@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { parseEther, formatEther, parseEventLogs, zeroAddress } from "viem";
 import { useAccount, useReadContracts, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { FACTORY, HOOK, chain, factoryAbi, friendlyError } from "@/lib/config";
@@ -9,12 +10,12 @@ const MAX_ALLOC = 10;
 const LAUNCH_STEPS = ["Token details", "Token artwork", "Social links", "Launch settings"];
 
 export function LaunchForm() {
+  const navigate = useNavigate();
   const { isConnected, chainId } = useAccount();
   const [f, setF] = useState({ name: "", symbol: "", desc: "", image: "", site: "", tw: "", tg: "", budget: "1", fee: "3", hook: "" });
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
   const [imageError, setImageError] = useState("");
-  const [showLaunchToast, setShowLaunchToast] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [stepError, setStepError] = useState("");
   const set = (k: keyof typeof f) => (e: { target: { value: string } }) => setF((p) => ({ ...p, [k]: e.target.value }));
@@ -34,10 +35,8 @@ export function LaunchForm() {
     : undefined;
   useEffect(() => {
     if (!token) return;
-    setShowLaunchToast(true);
-    const timeout = window.setTimeout(() => setShowLaunchToast(false), 5000);
-    return () => window.clearTimeout(timeout);
-  }, [token]);
+    void navigate({ to: "/token/$address", params: { address: token } });
+  }, [navigate, token]);
   const fdv = ethUsd ? 4500 / ethUsd : 0;
   const fdvWei = ethUsd ? parseEther(fdv.toFixed(18)) : 0n;
   const budget = parseFloat(f.budget) || 0, fee = parseFloat(f.fee);
@@ -198,12 +197,6 @@ export function LaunchForm() {
           </div>
         </div>
       </section>
-      {token && showLaunchToast && <div className="launch-toast" role="status" aria-live="polite">
-        <span className="live-dot" aria-hidden="true" />
-        <div><b>New launch is live</b><span>{f.name} · ${f.symbol}</span></div>
-        {chain.blockExplorers && <a href={`${chain.blockExplorers.default.url}/address/${token}`} target="_blank" rel="noopener noreferrer">View ↗</a>}
-        <button type="button" aria-label="Dismiss launch notification" onClick={() => setShowLaunchToast(false)}>×</button>
-      </div>}
     </div>
   );
 }
