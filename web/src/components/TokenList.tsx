@@ -205,7 +205,7 @@ export function TokenList() {
         </article>
         <article className="market-stat-card market-stat-tiles" aria-label="Proposed tiles per token">
           <div className="market-stat-art-stage" aria-hidden="true"><SquaresFour weight="duotone" /></div>
-          <div className="market-stat-copy"><span className="market-stat-label">Proposed tiles / token</span><b>100</b></div>
+          <div className="market-stat-copy"><span className="market-stat-label">owned tiles</span><b>1500</b></div>
         </article>
       </div>
       {market.error && <p className="market-stats-error">Market-wide activity summary is temporarily unavailable.</p>}
