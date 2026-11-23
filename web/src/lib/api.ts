@@ -22,15 +22,9 @@ export type TokenActivity = {
 export type MarketStats = { tokens: number; trades24h: number; volume24hEth: number; updatedAt: number };
 
 export function resolveTokenImage(image: string): string {
-  const ipfsPath = image.startsWith("ipfs://")
-    ? image.slice("ipfs://".length)
-    : image.match(/^https?:\/\/ipfs\.io\/ipfs\/(.+)$/i)?.[1];
-
-  // Use an absolute gateway URL so images also load when the frontend is deployed
-  // as a static Vite site without the custom Node server's /api/ipfs proxy route.
-  return ipfsPath ? `https://ipfs.io/ipfs/${ipfsPath}` : image;
+  const match = image.match(/^(?:ipfs:\/\/|https?:\/\/ipfs\.io\/ipfs\/)([a-zA-Z0-9]+)(?:\/.*)?$/i);
+  return match ? `/api/ipfs/${match[1]}` : image;
 }
-
 export async function fetchEthUsd(): Promise<number> {
   const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd", { signal: AbortSignal.timeout(8000) });
   if (!response.ok) throw new Error("ETH/USD reference price is unavailable.");

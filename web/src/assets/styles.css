@@ -965,3 +965,77 @@ body:has(.tile-detail-dialog[open]){overflow:hidden}
 .tile-detail-facts dt{color:#aeb4bd;font:10px/1.35 'DM Sans',sans-serif}
 .tile-detail-facts dd{margin:0;color:#f0f2f4;font:500 10px/1.4 'DM Sans',sans-serif;text-align:right;overflow-wrap:anywhere}
 @media(max-width:560px){.tile-detail-facts{padding-right:10px;padding-left:10px}.tile-detail-facts>div,.tile-detail-facts>div:last-child{grid-template-columns:minmax(88px,.72fr) minmax(0,1.28fr);gap:8px;padding:6px 0}.tile-detail-facts dt,.tile-detail-facts dd{font-size:9px}}
+
+/* Mobile type scale: keep the interface readable across every page. */
+@media(max-width:720px){
+  body{font-size:15px;line-height:1.5}
+  header.site-header nav a{font-size:12px}
+  header.site-header .wallet-pill{font-size:12px}
+  main p,main li,.note,.market-empty>span,.docs-lede,.docs-section>p,.docs-section li,
+  .launch-form-section-heading p,.launch-preview-description,.tiles-title-copy>p:last-child,
+  .tiles-rules-card p,.tiles-aside-prompt p,.token-info-card .token-description p,
+  .token-earnings-description{font-size:14px;line-height:1.55}
+  main label,.launch-form-section label{font-size:14px}
+  main input,main select,main textarea{font-size:16px}
+  .search-field input{font-size:15px}
+  .sort-field button,.launch-link,.trade-link{font-size:12px}
+  .market-overview span,.market-stat-label{font-size:10px}
+  .market-overview b,.market-stat-copy>b{font-size:13px}
+  .top-launch-title-row h3{font-size:16px}
+  .top-launch-title-row h3 span,.featured-stats span{font-size:9px}
+  .featured-stats b{font-size:11px}
+  .token-market-card .token-title-line>a{font-size:13px}
+  .token-market-card .token-title-line .pill{font-size:9px}
+  .token-card-metrics dd{font-size:11px}
+  .token-hero-kicker{font-size:10px}
+  .token-hero-data .token-hero-market-cap>span,.token-hero-data .token-hero-metrics span{font-size:9px;letter-spacing:.2px}
+  .token-hero-data .token-hero-metrics b{font-size:12px}
+  .token-chart-top .candle-intervals button{font-size:12px}
+  .token-chart-top .candle-intervals button span{font-size:9px}
+  .chart-market-status,.chart-activity-summary span{font-size:10px}
+  .chart-activity-summary b{font-size:12px}
+  .token-trade-card .swap-mode-switch button,.token-trade-card .swap-side-heading,
+  .token-trade-card .swap-side-heading label,.token-trade-card .swap-receive>span{font-size:13px}
+  .token-trade-card .swap-side .asset-chip,.token-trade-card .swap-side .asset-select,
+  .token-trade-card .swap-percent-options button,.token-trade-card .swap-settings,
+  .token-trade-card .swap-slippage input{font-size:12px}
+  .token-trade-card .swap-receive strong{font-size:16px}
+  .token-trade-card .swap-receive small{font-size:11px}
+  .token-trade-card .swap-panel>.actions button{font-size:15px}
+  .token-main-column>.token-info-card h2,.token-main-column>.token-earnings-card h2{font-size:17px}
+  .token-info-card .token-description>span,.token-earnings-summary .stat span{font-size:10px}
+  .token-earnings-summary .stat,.token-earnings-summary .stat b{font-size:13px}
+  .token-earnings-card>.note{font-size:12px}
+  .token-activity-tabs button{font-size:13px}
+  .token-activity-tabs button span,.token-activity-live{font-size:11px}
+  .token-activity-table th{font-size:10px}
+  .token-activity-table td{font-size:12px}
+  .token-feature-nav button{font-size:12px}
+  .tiles-breadcrumb,.tiles-eyebrow,.tiles-preview-badge,.tiles-selection-hint{font-size:11px}
+  .tiles-title-copy>p:last-child,.tiles-rules-card p,.tiles-aside-prompt p{font-size:13px}
+  .tiles-board-heading h2{font-size:17px}
+  .market-tile-number{font-size:clamp(7px,1.8vw,9px)}
+  .market-tile-price{font-size:clamp(6px,1.65vw,8px)}
+  .tiles-legend{font-size:10px}
+  .tiles-board-footnote,.tiles-disabled-note{font-size:12px}
+  .tiles-aside-stats span,.tiles-card-topline>span:first-child,.tiles-aside-stats small,.tiles-status{font-size:10px}
+  .tiles-detail-row,.tiles-detail-row b{font-size:12px}
+  .tiles-buy-button{font-size:13px}
+  .tile-detail-rarity{font-size:14px}
+  .tile-detail-token b{font-size:15px}
+  .tile-detail-token small,.tile-detail-facts dt,.tile-detail-facts dd{font-size:12px}
+  .tile-detail-rewards{font-size:12px}
+  .tile-detail-action{font-size:14px}
+  .tile-detail-disclaimer{font-size:10px}
+  .site-footer p,.site-footer a,.site-footer li{font-size:13px}
+}
+
+@media(max-width:720px){
+  .docs-kicker,.docs-breadcrumb,.docs-facts span,.docs-contract-list>div>span,
+  .docs-article .docs-callout>b,.docs-table th{font-size:11px}
+  .docs-callout>p,.docs-facts b,.docs-table td,.docs-contract-list>div>a,
+  .docs-methods>span,.docs-next>a,.docs-pagination-link>b,.docs-sidebar>a{font-size:12px}
+  .docs-section h3{font-size:17px}
+  .docs-address{font-size:11px!important}
+  .footer-network,.footer-copyright,.footer-disclosure h2{font-size:10px}
+}
