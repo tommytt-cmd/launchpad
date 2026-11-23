@@ -572,6 +572,30 @@ input[type=file]{padding:8px;border:1px dashed #495649;background:#121713;color:
   .token-trade-card .asset-chip,.token-trade-card .asset-select{min-height:36px;padding:7px 9px;font-size:11px}
 }
 
+/* Give the mobile navigation enough height and tap space. */
+@media(max-width:720px){
+  header.site-header{min-height:72px;padding:7px 16px;gap:10px}
+  .site-header .brand{gap:12px}
+  .site-header .brand-mark{font-size:17px}
+  .site-header .brand nav a{padding:10px 8px;font-size:13px}
+  .site-header .hdr button{min-height:42px;padding:9px 13px;font-size:13px}
+}
+@media(max-width:520px){
+  header.site-header{min-height:68px;padding:6px 12px;gap:5px}
+  .site-header .brand{gap:6px}
+  .site-header .brand-mark{font-size:15px}
+  .site-header .brand nav a{padding:10px 6px;font-size:12px}
+  .site-header .hdr button{min-height:40px;padding:8px 10px;font-size:12px}
+  .site-header .wallet-label-full{display:none}
+  .site-header .wallet-label-short{display:inline}
+}
+@media(max-width:360px){
+  header.site-header{min-height:64px;padding-right:9px;padding-left:9px}
+  .site-header .brand-mark{font-size:14px}
+  .site-header .brand nav a{padding:9px 5px;font-size:11px}
+  .site-header .hdr button{min-height:38px;padding:7px 9px;font-size:11px}
+}
+
 /* Homepage discovery signals and token-specific Tiles entry points. */
 .token-market-card .featured-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;margin-top:9px}
 .token-market-card .featured-stats>div{min-width:0;gap:3px}
