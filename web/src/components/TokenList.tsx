@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@/components/Link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchEthUsd, fetchMarketStats, fetchTokens, fmtUsd, ago, resolveTokenImage } from "@/lib/api";
+import { fetchEthUsd, fetchMarketStats, fetchTokens, fmtEth, fmtUsd, ago, resolveTokenImage } from "@/lib/api";
 
 const tokenHue = (address: string) => `${parseInt(address.slice(2, 8), 16) % 360}deg`;
 const tokenStyle = (address: string) => ({ "--token-hue": tokenHue(address) } as React.CSSProperties);
@@ -177,6 +177,23 @@ export function TokenList() {
       </div>
       {market.error && <p className="market-stats-error">Market-wide activity summary is temporarily unavailable.</p>}
       <TopLaunches ethUsd={ethUsd.data} />
+      {rankedTokens.length > 0 && <section className="tiles-entry-section" aria-labelledby="tiles-entry-title">
+        <div className="tiles-entry-heading">
+          <div><span className="tiles-entry-eyebrow">TOKEN-SPECIFIC FEE SHARING</span><h2 id="tiles-entry-title">Explore Tiles</h2><p>Each token has its own proposed board. Tile ownership is separate from the token and its liquidity.</p></div>
+          <span className="tiles-entry-status"><i aria-hidden="true" /> Preview</span>
+        </div>
+        <div className="tiles-entry-grid">
+          {rankedTokens.slice(0, 3).map((token) => (
+            <Link className="tiles-entry-card" href={`/tiles/${token.address}`} key={token.address} style={tokenStyle(token.address)}>
+              <div className="tiles-entry-art"><TokenArtwork token={token} /></div>
+              <div className="tiles-entry-copy"><b>{token.name}</b><span>${token.symbol} <i>·</i> launched {ago(token.createdAt)}</span></div>
+              <span className="tiles-entry-count">100 <small>tiles</small></span>
+              <span className="tiles-entry-cta">Explore board <b aria-hidden="true">↗</b></span>
+            </Link>
+          ))}
+        </div>
+        <p className="tiles-entry-note">Proposed Tiles preview. Ownership, rewards, and purchases are not connected to a live contract.</p>
+      </section>}
       <div className="toolbar">
         <label className="search-field"><span aria-hidden>⌕</span><input aria-label="Search" placeholder="Search token, ticker or address" value={q} onChange={(e) => setQ(e.target.value)} /></label>
         <div className="sort-field" role="group" aria-label="Sort tokens">
@@ -206,6 +223,8 @@ export function TokenList() {
               <div className="featured-stats">
                 <div><span>MARKET CAP</span><b>{ethUsd.data && t.marketCapEth != null ? fmtCompactUsd(t.marketCapEth * ethUsd.data) : "—"}</b></div>
                 <div><span>24H CHANGE</span><b className={t.change24hPercent == null || t.change24hPercent >= 0 ? "change-positive" : "change-negative"}>{t.change24hPercent == null || t.change24hPercent === 0 ? "0.0%" : `${t.change24hPercent > 0 ? "+" : ""}${t.change24hPercent.toFixed(1)}%`}</b></div>
+                <div><span>24H VOLUME</span><b>{ethUsd.data ? fmtCompactUsd(t.volume24hEth * ethUsd.data) : `${fmtEth(t.volume24hEth)} ETH`}</b></div>
+                <div><span>LAUNCHED</span><b>{ago(t.createdAt)}</b></div>
               </div>
             </div>
           </Link>
